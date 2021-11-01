@@ -1,0 +1,86 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: sans-serif;
+	padding: 10px 30px;
+}
+
+
+
+/* === LOGIN === */
+
+form {
+	width: 300px;
+	height: 170px;
+	/*background-color: red;*/
+	margin: 60px auto;
+}
+
+form h2 {
+	text-align: center;
+	color: gray;
+	margin-bottom: 30px;
+}
+
+form input {
+	border: none;
+	border-bottom: 1px solid gray;
+	width: 200px;
+	margin:  10px 50px;
+	padding: 10px 0;
+	text-indent: 10px;
+	color: gray;
+}
+
+form input[type="file"] {
+	border: none;
+}
+
+form button {
+	border:  1px solid gray;
+	width:  200px;
+	height: 40px;
+	margin: 10px 50px 0;
+	background-color: white;
+	line-height: 40px;
+	color: gray;
+}
+
+form button:hover {
+	cursor: pointer;
+}
+
+form button:hover {
+	background-color: gray;
+	color: white;
+}
+
+/* INDEX  */
+
+body a {
+	display: inline-block;
+	border:  1px solid gray;
+	padding: 10px;
+	text-decoration: none;
+	color:  gray;
+}
+
+body a:hover {
+	background-color: gray;
+	color: white;
+}
+
+body h2 {
+	margin: 20px 0;
+}
+
+body p {
+	margin: 0 0 20px 0;
+}
+
+body table tr th, body table tr td{
+	padding:  10px;
+}

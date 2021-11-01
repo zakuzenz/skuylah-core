@@ -1,0 +1,172 @@
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Convergence&display=swap");
+/*===== VARIABLES CSS =====*/
+:root {
+  --header-height: 3rem;
+
+  /*===== warna =====*/
+  --first-color: #212686;
+  --first-color-dark: #212686;
+  --first-color-darken: #3e44ba;
+  --white-color: #fcf8f8;
+
+  /*===== Font dan typography =====*/
+  --body-font: "Convergence", sans-serif;
+  --big-font-size: 2.5rem;
+  --normal-font-size: 0.938rem;
+
+  /*===== z index =====*/
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --big-font-size: 5rem;
+    --normal-font-size: 1rem;
+  }
+}
+
+/*===== BASE =====*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  padding: 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: 500;
+  background: linear-gradient(121.56deg, #00d5fa 20.91%, #00b3fe 50.25%, #009ccf 80.21%);
+}
+
+h1,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*===== LAYOUT =====*/
+.bd-grid {
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: 100%;
+  column-gap: 2rem;
+  width: calc(100% - 2rem);
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/*===== HOME =====*/
+.home {
+  overflow: hidden;
+}
+
+.home__container {
+  height: calc(100vh - var(--header-height));
+  grid-template-rows: repeat(2, max-content);
+  row-gap: 1.5rem;
+}
+
+.home__img {
+  position: relative;
+  padding-top: 1.5rem;
+  justify-self: center;
+  width: 302px;
+  height: 233px;
+}
+
+.home__img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.home__data {
+  color: #31369f;
+}
+
+.home__title {
+  font-size: var(--big-font-size);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.home__description {
+  margin-bottom: 2.5rem;
+}
+
+.home__button {
+  display: inline-block;
+  background-color: #31369f;
+  color: var(--white-color);
+  padding: 1.125rem 2rem;
+  border-radius: 0.5rem;
+}
+
+.home__button:hover {
+  background-color: var(--first-color-darken);
+}
+
+/* ===== MEDIA QUERIES =====*/
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+
+  .home__container {
+    height: 100vh;
+    grid-template-columns: repeat(2, max-content);
+    grid-template-rows: 1fr;
+    row-gap: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home__img {
+    order: 1;
+    width: 375px;
+    height: 289px;
+  }
+
+  .home__img img {
+    width: 375px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .bd-grid {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home__container {
+    justify-content: initial;
+    column-gap: 4.5rem;
+  }
+
+  .home__img {
+    width: 604px;
+    height: 466px;
+  }
+
+  .home__img img {
+    width: 604px;
+  }
+}
