@@ -20,17 +20,25 @@ $ambil_data_kelas = mysqli_query($koneksi_database, "SELECT * FROM kelas WHERE i
 $data_kelas = mysqli_fetch_assoc($ambil_data_kelas);
 
 if(isset($_POST["edit"])) {
+	// var_dump($_POST); die();
 	
 	$id_sekolah = $_SESSION["id_sekolah"];
 	$nama_kelas = $_POST["nama_kelas"];
 
-	$edit_kelas = mysqli_query($koneksi_database, "UPDATE kelas SET nama_kelas = '$nama_kelas' WHERE id_kelas = '$id_kelas' ");
+	$cek_nama_kelas = mysqli_query($koneksi_database, "SELECT nama_kelas FROM kelas WHERE nama_kelas='$nama_kelas' ");
 
-	if($edit_kelas) {
-		header("location: ../admin/daftar-kelas.php");
+	if(mysqli_num_rows($cek_nama_kelas) > 0) {
+		echo "nama kelas sudah digunakan";
 	} else {
-		die(mysqli_error($koneksi_database));
+		$edit_kelas = mysqli_query($koneksi_database, "UPDATE kelas SET nama_kelas = '$nama_kelas' WHERE id_kelas = '$id_kelas' ");
+
+		if($edit_kelas) {
+			header("location: ../admin/daftar-kelas.php");
+		} else {
+			die(mysqli_error($koneksi_database));
+		}
 	}
+
 
 }
 

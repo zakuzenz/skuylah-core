@@ -18,6 +18,8 @@ if(!$_SESSION) {
 
 require "koneksi-database.php";
 
+$pesan_kesalahan = "";
+
 if(isset($_POST["masuk"])) {
 	
 	$nama_pengguna = $_POST["nama_pengguna"];
@@ -30,7 +32,7 @@ if(isset($_POST["masuk"])) {
 	$id_pengguna = $nama_pengguna[1];
 
 	if($id_pengguna == NULL) {
-		echo "nama pengguna yang anda masukkan salah";
+		$pesan_kesalahan = "nama pengguna yang anda masukkan salah";
 	}
 
 	$cek_id_sekolah = mysqli_query($koneksi_database, "SELECT * FROM sekolah WHERE id_sekolah='$id_sekolah' ");
@@ -59,7 +61,7 @@ if(isset($_POST["masuk"])) {
 
 			} else {
 
-				echo "kata sandi yang anda masukkan salah";;
+				$pesan_kesalahan = "kata sandi yang anda masukkan salah";
 
 			}
 
@@ -78,7 +80,7 @@ if(isset($_POST["masuk"])) {
 
 			} else {
 
-				echo "kata sandi yang anda masukkan salah";
+				$pesan_kesalahan = "kata sandi yang anda masukkan salah";
 
 			}
 
@@ -97,15 +99,19 @@ if(isset($_POST["masuk"])) {
 
 			} else {
 
-				echo "kata sandi yang anda masukkan salah";
+				$pesan_kesalahan = "kata sandi yang anda masukkan salah";
 
 			}
 
 		} else {
 
-			echo "id pengguna yang anda masukkan salah";
+			$pesan_kesalahan = "id pengguna yang anda masukkan salah";
 
 		}
+
+	} else {
+
+			$pesan_kesalahan = "id sekolah yang anda masukkan salah";
 
 	}
 
@@ -125,6 +131,7 @@ if(isset($_POST["masuk"])) {
   <body>
     <div class="center">
       <h1>Login</h1>
+      <p><?php echo $pesan_kesalahan; ?></p>
       <form method="post">
         <div class="txt_field">
           <input type="text" name="nama_pengguna"  autocomplete="off" required />

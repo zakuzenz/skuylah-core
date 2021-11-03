@@ -40,8 +40,24 @@ $data_guru = mysqli_fetch_assoc($ambil_data_guru);
 			<td><?php echo $data_guru["nama_guru"]; ?></td>
 		</tr>
 		<tr>
+			<th>kata sandi</th>
+			<td><?php echo $data_guru["kata_sandi"]; ?></td>
+		</tr>
+		<tr>
 			<th>wali kelas</th>
 			<td><?php echo $data_guru["id_kelas"]; ?></td>
+		</tr>
+		<tr>
+			<th>jenis kelamin</th>
+			<td><?php echo $data_guru["jenis_kelamin"]; ?></td>
+		</tr>
+		<tr>
+			<th>no_whatsapp</th>
+			<td><?php echo $data_guru["no_whatsapp"]; ?></td>
+		</tr>
+		<tr>
+			<th>alamat</th>
+			<td><?php echo $data_guru["alamat"]; ?></td>
 		</tr>
 	</table>
 	
