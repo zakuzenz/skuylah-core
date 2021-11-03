@@ -14,7 +14,7 @@ if($_SESSION["peran"] == "guru") {
 
 require "../koneksi-database.php";
 
-$ambil_data_guru = mysqli_query($koneksi_database, "SELECT guru.id_guru, guru.nama_guru, kelas.nama_kelas FROM guru INNER JOIN kelas ON kelas.id_kelas = guru.id_kelas ");
+$ambil_data_guru = mysqli_query($koneksi_database, "SELECT * FROM guru");
 
 ?>
 
@@ -29,17 +29,22 @@ $ambil_data_guru = mysqli_query($koneksi_database, "SELECT guru.id_guru, guru.na
 
 	<a href="tambah-guru.php">tambah guru</a>
 
+	<br><br>
+
 	<table border="1" cellpadding="10" cellspacing="0">
 		<tr>
 			<th>id guru</th>
 			<th>nama guru</th>
-			<th>wali kelas</th>
+			<th>aksi</th>
 		</tr>
 		<?php while($data_guru = mysqli_fetch_assoc($ambil_data_guru)) : ?>
 			<tr>
 				<td><?php echo $data_guru["id_guru"]; ?></td>
 				<td><?php echo $data_guru["nama_guru"]; ?></td>
-				<td><?php echo $data_guru["nama_kelas"]; ?></td>
+				<td>
+					<a href="detail-guru.php?id=<?php echo $data_guru["id"]; ?>">detail</a> |
+					<a href="hapus-data.php?data=guru&&id-data=<?php echo $data_guru["id"]; ?>">hapus</a>
+				</td>
 			</tr>
 		<?php endwhile; ?>
 	</table>

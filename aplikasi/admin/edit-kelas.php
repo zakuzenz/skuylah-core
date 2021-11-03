@@ -14,14 +14,19 @@ if($_SESSION["peran"] == "guru") {
 
 require "../koneksi-database.php";
 
-if(isset($_POST["tambah"])) {
+$id_kelas = $_GET["id"];
+
+$ambil_data_kelas = mysqli_query($koneksi_database, "SELECT * FROM kelas WHERE id_kelas='$id_kelas' ");
+$data_kelas = mysqli_fetch_assoc($ambil_data_kelas);
+
+if(isset($_POST["edit"])) {
 	
 	$id_sekolah = $_SESSION["id_sekolah"];
 	$nama_kelas = $_POST["nama_kelas"];
 
-	$tambah_kelas = mysqli_query($koneksi_database, "INSERT INTO kelas(id_sekolah, nama_kelas) VALUES('$id_sekolah', '$nama_kelas') ");
+	$edit_kelas = mysqli_query($koneksi_database, "UPDATE kelas SET nama_kelas = '$nama_kelas' WHERE id_kelas = '$id_kelas' ");
 
-	if($tambah_kelas) {
+	if($edit_kelas) {
 		header("location: ../admin/daftar-kelas.php");
 	} else {
 		die(mysqli_error($koneksi_database));
@@ -40,9 +45,9 @@ if(isset($_POST["tambah"])) {
 
 	<form method="post">
 
-		<input type="text" name="nama_kelas" placeholder="nama kelas">
+		<input type="text" name="nama_kelas" placeholder="nama kelas" value="<?php echo $data_kelas["nama_kelas"]; ?>">
 
-		<button type="submit" name="tambah">tambah</button>
+		<button type="submit" name="edit">edit</button>
 		
 	</form>
 	

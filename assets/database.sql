@@ -37,7 +37,7 @@ CREATE TABLE guru(
   
   id_kelas INT,
   CONSTRAINT fk_sekolah_guru FOREIGN KEY (id_sekolah) REFERENCES sekolah (id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT fk_kelas_guru FOREIGN KEY (id_kelas) REFERENCES kelas(id_kelas) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT fk_kelas_guru FOREIGN KEY (id_kelas) REFERENCES kelas(id_kelas) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 INSERT INTO guru(id_sekolah, id_guru, nama_guru, kata_sandi) VALUES
@@ -51,9 +51,9 @@ CREATE TABLE siswa(
   nama_siswa VARCHAR(255) NOT NULL,
   kata_sandi VARCHAR(255) NOT NULL DEFAULT "123",
   
-  id_kelas INT NOT NULL,
+  id_kelas INT,
   CONSTRAINT fk_sekolah_siswa FOREIGN KEY (id_sekolah) REFERENCES sekolah (id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT fk_kelas_siswa FOREIGN KEY (id_kelas) REFERENCES kelas(id_kelas) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT fk_kelas_siswa FOREIGN KEY (id_kelas) REFERENCES kelas(id_kelas) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 INSERT INTO siswa(id_sekolah, id_siswa, nama_siswa, kata_sandi, id_kelas) VALUES

@@ -34,6 +34,7 @@ if(isset($_POST["masuk"])) {
 	}
 
 	$cek_id_sekolah = mysqli_query($koneksi_database, "SELECT * FROM sekolah WHERE id_sekolah='$id_sekolah' ");
+	$data_sekolah = mysqli_fetch_assoc($cek_id_sekolah);
 
 	if(mysqli_num_rows($cek_id_sekolah) > 0) {
 
@@ -50,6 +51,7 @@ if(isset($_POST["masuk"])) {
 			if($kata_sandi == $data_admin["kata_sandi"]) {
 
 				$_SESSION["login"] = true;
+				$_SESSION["id_sekolah"] = $data_sekolah["id"];
 				$_SESSION["peran"] = "admin";
 				$_SESSION["id_admin"] = $data_admin["id_admin"];
 
@@ -68,6 +70,7 @@ if(isset($_POST["masuk"])) {
 			if($kata_sandi == $data_guru["kata_sandi"]) {
 
 				$_SESSION["login"] = true;
+				$_SESSION["id_sekolah"] = $data_sekolah["id"];
 				$_SESSION["peran"] = "guru";
 				$_SESSION["id_guru"] = $data_guru["id_guru"];
 
@@ -86,6 +89,7 @@ if(isset($_POST["masuk"])) {
 			if($kata_sandi == $data_siswa["kata_sandi"]) {
 
 				$_SESSION["login"] = true;
+				$_SESSION["id_sekolah"] = $data_sekolah["id"];
 				$_SESSION["peran"] = "siswa";
 				$_SESSION["id_siswa"] = $data_siswa["id_siswa"];
 

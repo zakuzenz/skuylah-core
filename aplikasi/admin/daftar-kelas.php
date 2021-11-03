@@ -29,13 +29,20 @@ $ambil_data_kelas = mysqli_query($koneksi_database, "SELECT * FROM kelas");
 
 	<a href="tambah-kelas.php">tambah kelas</a>
 
+	<br><br>
+
 	<table border="1" cellpadding="10" cellspacing="0">
 		<tr>
 			<th>nama kelas</th>
+			<th>aksi</th>
 		</tr>
 		<?php while($data_kelas = mysqli_fetch_assoc($ambil_data_kelas)) : ?>
 			<tr>
 				<td><?php echo $data_kelas["nama_kelas"]; ?></td>
+				<td>
+					<a href="edit-kelas.php?id=<?php echo $data_kelas['id_kelas']; ?>">edit</a> |
+					<a href="hapus-data.php?data=kelas&&id-data=<?php echo $data_kelas["id_kelas"]; ?>">hapus</a>
+				</td>
 			</tr>
 		<?php endwhile; ?>
 	</table>

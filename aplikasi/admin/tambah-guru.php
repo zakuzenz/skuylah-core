@@ -14,11 +14,6 @@ if($_SESSION["peran"] == "guru") {
 
 require "../koneksi-database.php";
 
-$ambil_data_kelas = mysqli_query($koneksi_database, "SELECT * FROM kelas WHERE NOT EXISTS (SELECT id_kelas FROM guru WHERE kelas.id_kelas = guru.id_kelas) ");
-
-if(!$ambil_data_kelas) {
-	$ambil_data_kelas = mysqli_query($koneksi_database, "SELECT * FROM kelas");
-}
 
 if(isset($_POST["tambah"])) {
 	// var_dump($_POST); die();
@@ -56,15 +51,17 @@ if(isset($_POST["tambah"])) {
 		}
 	}
 
+	$id_sekolah = $_SESSION["id_sekolah"];
 	$nama_guru = $_POST["nama_guru"];
-	$kelas = $_POST["kelas"];
 
-	// var_dump($id_guru, $nama_guru, $kelas); die();
+	// var_dump($id_sekolah, $id_guru, $nama_guru); die();
 
-	$tambah_guru = mysqli_query($koneksi_database, "INSERT INTO guru(id_guru, nama_guru, id_kelas) VALUES('$id_guru' ,'$nama_guru', '$kelas') ");
+	$tambah_guru = mysqli_query($koneksi_database, "INSERT INTO guru(id_sekolah, id_guru, nama_guru) VALUES('$id_sekolah', '$id_guru', '$nama_guru') ");
 
 	if($tambah_guru) {
 		header("location: ../admin/daftar-guru.php");
+	} else {
+		die(mysqli_error($koneksi_database));
 	}
 
 }
@@ -78,15 +75,11 @@ if(isset($_POST["tambah"])) {
 
 	<a href="../admin/daftar-guru.php">kembali</a>
 
+	<br><br>
+
 	<form method="post">
 
 		<input type="text" name="nama_guru" placeholder="nama guru">
-
-		<select name="kelas">
-			<?php while($data_kelas = mysqli_fetch_assoc($ambil_data_kelas)) : ?>
-				<option value="<?php echo $data_kelas["id_kelas"] ?>"><?php echo $data_kelas["nama_kelas"]; ?></option>
-			<?php endwhile; ?>
-		</select>
 
 		<button type="submit" name="tambah">tambah</button>
 		
