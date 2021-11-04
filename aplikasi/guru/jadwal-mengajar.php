@@ -58,8 +58,6 @@ $kueri_data_jadwal = "
 
 $ambil_data_jadwal = mysqli_query($koneksi_database, $kueri_data_jadwal);
 
-$waktu_saat_ini = date("H:i:s");
-
 ?>
 
 <!DOCTYPE html>
@@ -85,8 +83,20 @@ $waktu_saat_ini = date("H:i:s");
 			<td><?php echo $data_jadwal["nama_hari"]; ?></td>
 			<td><?php echo $data_jadwal["nama_kelas"]; ?></td>
 			<td><?php echo $data_jadwal["nama_mata_pelajaran"]; ?></td>
-			<td><?php echo $data_jadwal["waktu_mulai"]; ?></td>
-			<td><?php echo $data_jadwal["waktu_selesai"]; ?></td>
+			<td><?php
+				$waktu_mulai = $data_jadwal["waktu_mulai"];
+				$waktu_mulai = explode(":", $waktu_mulai);
+				$waktu_mulai = $waktu_mulai[0] . ":" . $waktu_mulai[1];
+
+				echo $waktu_mulai;
+			?></td>
+			<td><?php
+				$waktu_selesai = $data_jadwal["waktu_selesai"];
+				$waktu_selesai = explode(":", $waktu_selesai);
+				$waktu_selesai = $waktu_selesai[0] . ":" . $waktu_selesai[1];
+
+				echo $waktu_selesai;
+			?></td>
 			<td>
 				<?php if ($hari_saat_ini != $data_jadwal["nama_hari"] && $waktu_saat_ini < $data_jadwal["waktu_mulai"]): ?>
 					<p>belum waktunya mengajar</p>

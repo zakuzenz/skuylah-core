@@ -73,8 +73,8 @@ if(isset($_POST["edit"])) {
 			<input type="radio" id="laki-laki" name="jenis_kelamin" value="laki-laki">
 			<label for="laki-laki">laki-laki</label>
 			<input type="radio" id="perempuan" name="jenis_kelamin" value="perempuan" checked>
-		<?php elseif($data_siswa["jenis_kelamin"] == "laki-laki") : ?>
 			<label for="perempuan">perempuan</label>
+		<?php elseif($data_siswa["jenis_kelamin"] == "laki-laki") : ?>
 			<input type="radio" id="laki-laki" name="jenis_kelamin" value="laki-laki" checked>
 			<label for="laki-laki">laki-laki</label>
 			<input type="radio" id="perempuan" name="jenis_kelamin" value="perempuan">
