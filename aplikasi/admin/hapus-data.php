@@ -23,6 +23,12 @@ if($data == "kelas") {
 	$id = "id";
 	$alamat_kembali = "daftar-siswa.php";
 
+} elseif($data == "jadwal") {
+
+	$nama_tabel = "jadwal";
+	$id = "id_jadwal";
+	$alamat_kembali = "daftar-jadwal.php";
+
 }
 
 // echo $nama_tabel . " " . $id . " " . $alamat_kembali;

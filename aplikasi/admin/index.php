@@ -33,7 +33,7 @@ $data_admin = mysqli_fetch_assoc($ambil_data_admin);
 	<a href="daftar-kelas.php">daftar kelas</a> |
 	<a href="daftar-guru.php">daftar guru</a> |
 	<a href="daftar-siswa.php">daftar siswa</a> |
-	<a href="buat-jadwal.php">buat jadwal</a> |
+	<a href="daftar-jadwal.php">daftar jadwal</a> |
 	
 </body>
 </html>

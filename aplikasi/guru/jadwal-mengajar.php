@@ -21,6 +21,7 @@ $data_guru = mysqli_fetch_assoc($ambil_data_guru);
 
 $id_guru = $data_guru["id"];
 
+$waktu_saat_ini = date("H:i:s");
 $hari_saat_ini = date("l");
 
 if($hari_saat_ini == "Sunday") {
@@ -99,23 +100,19 @@ $ambil_data_jadwal = mysqli_query($koneksi_database, $kueri_data_jadwal);
 			?></td>
 			<td>
 				<?php if ($hari_saat_ini != $data_jadwal["nama_hari"] && $waktu_saat_ini < $data_jadwal["waktu_mulai"]): ?>
-					<p>belum waktunya mengajar</p>
+					<p>belum waktunya mengajar 1</p>
 				<?php elseif($hari_saat_ini != $data_jadwal["nama_hari"] && $waktu_saat_ini > $data_jadwal["waktu_selesai"]) : ?>
-					<p>belum waktunya mengajar</p>
+					<p>belum waktunya mengajar 2</p>
 				<?php elseif($hari_saat_ini != $data_jadwal["nama_hari"] && $waktu_saat_ini >= $data_jadwal["waktu_mulai"] AND $waktu_saat_ini <= $data_jadwal["waktu_selesai"]) : ?>
-					<p>belum waktunya mengajar</p>
+					<p>belum waktunya mengajar 3</p>
 				<?php elseif($hari_saat_ini == $data_jadwal["nama_hari"] && $waktu_saat_ini < $data_jadwal["waktu_mulai"]) : ?>
-					<p>belum waktunya mengajar</p>
+					<p>belum waktunya mengajar 4</p>
 				<?php elseif($hari_saat_ini == $data_jadwal["nama_hari"] && $waktu_saat_ini > $data_jadwal["waktu_selesai"]) : ?>
 					<p>waktu sudah lewat</p>
 				<?php else: ?>
-					<a href="
-						pelajaran.php?
-							id-jenis-pelajaran=1&&
-							id-kelas=<?php echo $data_jadwal["id_kelas"]; ?>&&
-							id-mata-pelajaran=<?php echo $data_jadwal['id_mata_pelajaran']; ?>
+					<a href="pelajaran.php?id-jenis-pelajaran=1&&id-kelas=<?php echo $data_jadwal["id_kelas"]; ?>&&id-mata-pelajaran=<?php echo $data_jadwal['id_mata_pelajaran']; ?>
 					">masuk kelas</a>
-				<?php endif ?>
+				<?php endif; ?>
 			</td>
 			<!-- <td>
 				<?php if ($waktu_saat_ini < $data_jadwal["waktu_mulai"]): ?>

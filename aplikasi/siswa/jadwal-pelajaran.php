@@ -123,7 +123,7 @@ if($hari_saat_ini == "Sunday") {
 					<p>waktu sudah lewat</p>
 				<?php else: ?>
 					<a href="pelajaran.php?id-mata-pelajaran=<?php echo $data_jadwal['id_mata_pelajaran']; ?>">masuk kelas</a>
-				<?php endif ?>
+				<?php endif; ?>
 			</td>
 		</tr>
 		<?php endwhile; ?>
