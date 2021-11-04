@@ -19,15 +19,18 @@ $id = $_GET["id"];
 $ambil_data_guru = mysqli_query($koneksi_database, "SELECT * FROM guru WHERE id='$id' ");
 $data_guru = mysqli_fetch_assoc($ambil_data_guru);
 
+$ambil_data_kelas = mysqli_query($koneksi_database, "SELECT * FROM kelas");
+
 if(isset($_POST["edit"])) {
 	// var_dump($_POST); die();
 
 	$nama_guru = $_POST["nama_guru"];
+	$id_kelas = $_POST["id_kelas"];
 	$jenis_kelamin = $_POST["jenis_kelamin"];
 	$no_whatsapp = $_POST["no_whatsapp"];
 	$alamat = $_POST["alamat"];
 
-	$edit_guru = mysqli_query($koneksi_database, "UPDATE guru SET nama_guru = '$nama_guru', jenis_kelamin = '$jenis_kelamin', no_whatsapp = '$no_whatsapp', alamat = '$alamat' WHERE id='$id' ");
+	$edit_guru = mysqli_query($koneksi_database, "UPDATE guru SET nama_guru = '$nama_guru', id_kelas = '$id_kelas', jenis_kelamin = '$jenis_kelamin', no_whatsapp = '$no_whatsapp', alamat = '$alamat' WHERE id='$id' ");
 
 	if($edit_guru) {
 		header("location: ../admin/detail-guru.php?id=$id");
@@ -49,6 +52,12 @@ if(isset($_POST["edit"])) {
 	<form method="post">
 
 		<input type="text" name="nama_guru" placeholder="nama guru" value="<?php echo $data_guru['nama_guru']; ?>">
+
+		<select name="id_kelas">
+			<?php while($data_kelas = mysqli_fetch_assoc($ambil_data_kelas)) : ?>
+			<option value="<?php echo $data_kelas['id_kelas'] ?>"><?php echo $data_kelas['nama_kelas'] ?></option>
+			<?php endwhile; ?>
+		</select>
 
 		<input type="text" name="no_whatsapp" placeholder="no whatsapp" value="<?php echo $data_guru['no_whatsapp']; ?>">
 

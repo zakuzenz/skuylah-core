@@ -43,7 +43,7 @@ $ambil_data_guru = mysqli_query($koneksi_database, "SELECT * FROM guru");
 				<td><?php echo $data_guru["nama_guru"]; ?></td>
 				<td>
 					<a href="detail-guru.php?id=<?php echo $data_guru["id"]; ?>">detail</a> |
-					<a href="hapus-data.php?data=guru&&id-data=<?php echo $data_guru["id"]; ?>">hapus</a>
+					<a href="hapus-data.php?data=guru&&id-data=<?php echo $data_guru["id"]; ?>" onclick="return confirm('serius mau dihapus?');">hapus</a>
 				</td>
 			</tr>
 		<?php endwhile; ?>

@@ -43,7 +43,7 @@ $ambil_data_siswa = mysqli_query($koneksi_database, "SELECT * FROM siswa");
 				<td><?php echo $data_siswa["nama_siswa"]; ?></td>
 				<td>
 					<a href="detail-siswa.php?id=<?php echo $data_siswa["id"]; ?>">detail</a> |
-					<a href="hapus-data.php?data=siswa&&id-data=<?php echo $data_siswa["id"]; ?>">hapus</a>
+					<a href="hapus-data.php?data=siswa&&id-data=<?php echo $data_siswa["id"]; ?>" onclick="return confirm('serius mau dihapus?');">hapus</a>
 				</td>
 			</tr>
 		<?php endwhile; ?>

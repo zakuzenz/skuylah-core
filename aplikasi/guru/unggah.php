@@ -74,10 +74,8 @@ if(isset($_POST["unggah"])) {
 				echo "ubah nama file terlebih dahulu";
 			} else {
 				$kueri_unggah = "
-					INSERT INTO pelajaran
-						(tanggal, id_kelas, id_jenis_pelajaran, id_mata_pelajaran, id_guru, pelajaran)
-					VALUES
-						($tanggal_hari_ini, $kelas, $jenis_pelajaran, $mata_pelajaran, $id_guru, '$nama_pelajaran_baru')
+					INSERT INTO pelajaran(tanggal, id_kelas, id_jenis_pelajaran, id_mata_pelajaran, id_guru, pelajaran)
+					VALUES ('$tanggal_hari_ini', '$kelas', '$jenis_pelajaran', $mata_pelajaran, '$id_guru', '$nama_pelajaran_baru')
 				";
 
 				$unggah = mysqli_query($koneksi_database, $kueri_unggah);
@@ -86,7 +84,7 @@ if(isset($_POST["unggah"])) {
 					move_uploaded_file($file_tmp, '../file/'.$nama_pelajaran_baru);
 					header("location: ../guru/pelajaran.php?id-jenis-pelajaran=$id_jenis_pelajaran&&id-kelas=$id_kelas&&id-mata-pelajaran=$id_mata_pelajaran ");
 				} else {
-					echo "nama file terlalu panjang";
+					die(mysqli_error($koneksi_database));
 				}
 			}
 

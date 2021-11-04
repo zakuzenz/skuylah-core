@@ -84,7 +84,8 @@ $data_mata_pelajaran = mysqli_fetch_assoc($ambil_data_mata_pelajaran);
 					id-kelas=<?php echo $id_kelas; ?>&&
 					id-pelajaran=<?php echo $data_pelajaran['id_pelajaran']; ?>&&
 					id-jenis-pelajaran=<?php echo $id_jenis_pelajaran; ?>
-				">daftar hadir siswa</a>
+				">daftar hadir siswa</a> |
+				<a href="../file/hapus-pelajaran.php?id=<?php echo $data_pelajaran['id_pelajaran']; ?>&&id-jenis-pelajaran=<?php echo $id_jenis_pelajaran; ?>&&id-kelas=<?php echo $id_kelas; ?>&&id-mata-pelajaran=<?php echo $id_mata_pelajaran; ?>" onclick="return confirm('serius mau dihapus?');">hapus</a>
 			</td>
 		</tr>
 		<?php endwhile; ?>

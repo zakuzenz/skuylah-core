@@ -104,7 +104,7 @@ $ambil_data_jadwal = mysqli_query($koneksi_database, $kueri_data_jadwal);
 				<?php elseif($hari_saat_ini != $data_jadwal["nama_hari"] && $waktu_saat_ini > $data_jadwal["waktu_selesai"]) : ?>
 					<p>belum waktunya mengajar 2</p>
 				<?php elseif($hari_saat_ini != $data_jadwal["nama_hari"] && $waktu_saat_ini >= $data_jadwal["waktu_mulai"] AND $waktu_saat_ini <= $data_jadwal["waktu_selesai"]) : ?>
-					<p>belum waktunya mengajar 3</p>
+					<p>-</p>
 				<?php elseif($hari_saat_ini == $data_jadwal["nama_hari"] && $waktu_saat_ini < $data_jadwal["waktu_mulai"]) : ?>
 					<p>belum waktunya mengajar 4</p>
 				<?php elseif($hari_saat_ini == $data_jadwal["nama_hari"] && $waktu_saat_ini > $data_jadwal["waktu_selesai"]) : ?>

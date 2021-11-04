@@ -83,7 +83,7 @@ $ambil_data_jadwal = mysqli_query($koneksi_database, $kueri_data_jadwal);
 			?></td>
 			<td>
 				<a href="edit-jadwal.php?id=<?php echo $data_jadwal["id_jadwal"]; ?>">edit</a> |
-				<a href="hapus-data.php?data=jadwal&&id-data=<?php echo $data_jadwal["id_jadwal"]; ?>">hapus</a>
+				<a href="hapus-data.php?data=jadwal&&id-data=<?php echo $data_jadwal["id_jadwal"]; ?>" onclick="return confirm('serius mau dihapus?');">hapus</a>
 			</td>
 		</tr>
 		<?php endwhile; ?>

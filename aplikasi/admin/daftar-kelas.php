@@ -41,7 +41,7 @@ $ambil_data_kelas = mysqli_query($koneksi_database, "SELECT * FROM kelas");
 				<td><?php echo $data_kelas["nama_kelas"]; ?></td>
 				<td>
 					<a href="edit-kelas.php?id=<?php echo $data_kelas['id_kelas']; ?>">edit</a> |
-					<a href="hapus-data.php?data=kelas&&id-data=<?php echo $data_kelas["id_kelas"]; ?>">hapus</a>
+					<a href="hapus-data.php?data=kelas&&id-data=<?php echo $data_kelas["id_kelas"]; ?>" onclick="return confirm('serius mau dihapus?');">hapus</a>
 				</td>
 			</tr>
 		<?php endwhile; ?>
