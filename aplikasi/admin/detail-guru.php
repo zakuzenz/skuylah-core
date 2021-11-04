@@ -17,6 +17,10 @@ require "../koneksi-database.php";
 $id = $_GET["id"];
 
 $ambil_data_guru = mysqli_query($koneksi_database, "SELECT guru.nama_guru, guru.kata_sandi, guru.jenis_kelamin, guru.no_whatsapp, guru.alamat, kelas.nama_kelas FROM guru INNER JOIN kelas ON kelas.id_kelas = guru.id_kelas WHERE id='$id' ");
+
+if(mysqli_num_rows($ambil_data_guru) < 1) {
+	$ambil_data_guru = mysqli_query($koneksi_database, "SELECT * FROM guru");
+}
 $data_guru = mysqli_fetch_assoc($ambil_data_guru);
 
 ?>

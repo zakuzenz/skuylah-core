@@ -31,7 +31,11 @@ $data_guru = mysqli_fetch_assoc($ambil_data_guru);
 	<h2><?php echo $data_guru["nama_guru"]; ?></h2>
 
 	<a href="jadwal-mengajar.php">jadwal mengajar</a> |
-	<a href="kelasku.php">kelasku</a>
+	<?php if ($data_guru["id_kelas"] == ""): ?>
+		
+	<?php else: ?>
+		<a href="kelasku.php">kelasku</a>
+	<?php endif ?>
 	
 </body>
 </html>

@@ -26,6 +26,7 @@ $id_kelas = $_GET["id-kelas"];
 $id_pelajaran = $_GET["id-pelajaran"];
 
 $id_jenis_pelajaran = $_GET["id-jenis-pelajaran"];
+$id_mata_pelajaran = $_GET["id-mata-pelajaran"];
 
 $kueri_data_daftar_hadir = "
 	SELECT
@@ -49,7 +50,8 @@ $ambil_data_daftar_hadir = mysqli_query($koneksi_database, $kueri_data_daftar_ha
 
 	<a href="pelajaran.php?
 	id-jenis-pelajaran=<?php echo $id_jenis_pelajaran; ?>&&
-	id-kelas=<?php echo $id_kelas; ?>">kembali</a>
+	id-kelas=<?php echo $id_kelas; ?>&&
+	id-mata-pelajaran=<?php echo $id_mata_pelajaran; ?>">kembali</a>
 
 	<br><br>
 

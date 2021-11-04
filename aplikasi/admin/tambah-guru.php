@@ -54,9 +54,13 @@ if(isset($_POST["tambah"])) {
 	$id_sekolah = $_SESSION["id_sekolah"];
 	$nama_guru = $_POST["nama_guru"];
 
+	$no_whatsapp = $_POST["no_whatsapp"];
+	$jenis_kelamin = $_POST["jenis_kelamin"];
+	$alamat = $_POST["alamat"];
+
 	// var_dump($id_sekolah, $id_guru, $nama_guru); die();
 
-	$tambah_guru = mysqli_query($koneksi_database, "INSERT INTO guru(id_sekolah, id_guru, nama_guru) VALUES('$id_sekolah', '$id_guru', '$nama_guru') ");
+	$tambah_guru = mysqli_query($koneksi_database, "INSERT INTO guru(id_sekolah, id_guru, nama_guru, no_whatsapp, jenis_kelamin, alamat) VALUES('$id_sekolah', '$id_guru', '$nama_guru', '$no_whatsapp', '$jenis_kelamin', '$alamat') ");
 
 	if($tambah_guru) {
 		header("location: ../admin/daftar-guru.php");
@@ -80,6 +84,15 @@ if(isset($_POST["tambah"])) {
 	<form method="post">
 
 		<input type="text" name="nama_guru" placeholder="nama guru">
+
+		<input type="text" name="no_whatsapp" placeholder="no whatsapp">
+
+		<input type="radio" id="laki-laki" name="jenis_kelamin" value="laki-laki">
+		<label for="laki-laki">laki-laki</label>
+		<input type="radio" id="perempuan" name="jenis_kelamin" value="perempuan">
+		<label for="perempuan">perempuan</label>
+
+		<textarea name="alamat" cols="30" rows="3" placeholder="alamat" ></textarea>
 
 		<button type="submit" name="tambah">tambah</button>
 		

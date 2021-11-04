@@ -44,7 +44,7 @@ if(isset($_POST["unggah"])) {
 
 	// var_dump($_FILES); die();
 
-	$ekstensi_diperbolehkan	= array('pdf','docx');
+	$ekstensi_diperbolehkan	= array('pdf','docx','pptx');
 	$nama_pelajaran = $_FILES['pelajaran']['name'];
 
 	$x = explode('.', $nama_pelajaran);
@@ -66,7 +66,7 @@ if(isset($_POST["unggah"])) {
 	// var_dump($tanggal_hari_ini, $kelas, $jenis_pelajaran, $mata_pelajaran, $id_guru, $nama_pelajaran); die();
 
 	if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
-		if($ukuran < 1044070){
+		if($ukuran < 10485760){
 
 			$cek_nama_file = mysqli_query($koneksi_database, "SELECT * FROM pelajaran WHERE pelajaran='$nama_pelajaran_baru' ");
 			// var_dump($cek_nama_file); die();
@@ -82,6 +82,9 @@ if(isset($_POST["unggah"])) {
 
 				if($unggah) {
 					move_uploaded_file($file_tmp, '../file/'.$nama_pelajaran_baru);
+					echo "<script>
+						alert('berhasil mengunggah file');
+					</script>";
 					header("location: ../guru/pelajaran.php?id-jenis-pelajaran=$id_jenis_pelajaran&&id-kelas=$id_kelas&&id-mata-pelajaran=$id_mata_pelajaran ");
 				} else {
 					die(mysqli_error($koneksi_database));
@@ -89,10 +92,10 @@ if(isset($_POST["unggah"])) {
 			}
 
 		}else{
-			echo 'UKURAN FILE TERLALU BESAR';
+			echo 'ukuran file terlalu besar';
 		}
 	}else{
-		echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
+		echo 'ekstensi file yang diunggah tidak diperbolehkan';
 	}
 
 }
@@ -111,6 +114,8 @@ if(isset($_POST["unggah"])) {
 	">kembali</a> | <br>
 
 	<h2><?php echo "unggah " . $data_jenis_pelajaran['nama_jenis_pelajaran'] . " " . $data_mata_pelajaran['nama_mata_pelajaran'] . " kelas " . $data_kelas["nama_kelas"]; ?></h2>
+
+	<p>ekstensi file yang boleh diunggah : .pdf, .docx, .pptx</p>
 
 	<form method="post" enctype="multipart/form-data">
 

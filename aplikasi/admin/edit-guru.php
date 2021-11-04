@@ -34,6 +34,8 @@ if(isset($_POST["edit"])) {
 
 	if($edit_guru) {
 		header("location: ../admin/detail-guru.php?id=$id");
+	} else {
+		die(mysqli_error($koneksi_database));
 	}
 	
 }
