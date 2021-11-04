@@ -31,6 +31,7 @@ $data_siswa = mysqli_fetch_assoc($ambil_data_siswa);
 	<a href="../keluar.php">keluar</a>
 	<h2><?php echo $data_siswa["nama_siswa"]; ?></h2>
 
+	<a href="profil.php">profil</a> |
 	<a href="jadwal-pelajaran.php">jadwal pelajaran</a>
 	
 </body>

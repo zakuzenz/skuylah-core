@@ -63,18 +63,22 @@ $ambil_data_pelajaran = mysqli_query($koneksi_database, $kueri_data_pelajaran);
 		<tr>
 			<!-- <th>jenis pelajaran</th> -->
 			<!-- <th>nama guru</th> -->
+			<th>no.</th>
 			<th>pelajaran</th>
 			<th>aksi</th>
 		</tr>
+		<?php $no = 1; ?>
 		<?php while($data_pelajaran = mysqli_fetch_assoc($ambil_data_pelajaran)) : ?>
 		<tr>
 			<!-- <td><?php echo $data_pelajaran["nama_jenis_pelajaran"]; ?></td> -->
 			<!-- <td><?php echo $data_pelajaran["nama_guru"]; ?></td> -->
+			<td><?php echo $no; ?></td>
 			<td><?php echo $data_pelajaran["pelajaran"]; ?></td>
 			<td>
 				<a href="buka-pelajaran.php?id-pelajaran=<?php echo $data_pelajaran['id_pelajaran']; ?>&&id-jenis-pelajaran=<?php echo $data_pelajaran['id_jenis_pelajaran']; ?>">buka</a>
 			</td>
 		</tr>
+		<?php $no++; ?>
 		<?php endwhile; ?>
 	</table>
 	

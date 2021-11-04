@@ -71,12 +71,15 @@ $data_mata_pelajaran = mysqli_fetch_assoc($ambil_data_mata_pelajaran);
 
 	<table border="1" cellpadding="10" cellspacing="0">
 		<tr>
+			<th>no.</th>
 			<th>tanggal</th>
 			<th>pelajaran</th>
 			<th>aksi</th>
 		</tr>
+		<?php $no = 1; ?>
 		<?php while($data_pelajaran = mysqli_fetch_assoc($ambil_data_pelajaran)) : ?>
 		<tr>
+			<td><?php echo $no; ?></td>
 			<td><?php echo $data_pelajaran["tanggal"]; ?></td>
 			<td><?php echo $data_pelajaran["pelajaran"]; ?></td>
 			<td>
@@ -89,6 +92,7 @@ $data_mata_pelajaran = mysqli_fetch_assoc($ambil_data_mata_pelajaran);
 				<a href="../file/hapus-pelajaran.php?id=<?php echo $data_pelajaran['id_pelajaran']; ?>&&id-jenis-pelajaran=<?php echo $id_jenis_pelajaran; ?>&&id-kelas=<?php echo $id_kelas; ?>&&id-mata-pelajaran=<?php echo $id_mata_pelajaran; ?>" onclick="return confirm('serius mau dihapus?');">hapus</a>
 			</td>
 		</tr>
+		<?php $no++; ?>
 		<?php endwhile; ?>
 	</table>
 

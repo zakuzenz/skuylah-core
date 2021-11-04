@@ -19,6 +19,20 @@ require "../koneksi-database.php";
 $ambil_data_guru = mysqli_query($koneksi_database, "SELECT * FROM guru WHERE id_guru='$id_guru' ");
 $data_guru = mysqli_fetch_assoc($ambil_data_guru);
 
+$id_guru = $data_guru["id"];
+
+if(isset($_POST["ubah"])) {
+	$kata_sandi = $_POST["kata_sandi"];
+
+	$kueri_ubah = mysqli_query($koneksi_database, "UPDATE guru SET kata_sandi = '$kata_sandi' WHERE id = '$id_guru' ");
+
+	if($kueri_ubah) {
+		header("location: profil.php");
+	} else {
+		die(mysqli_error($koneksi_database));
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -26,18 +40,17 @@ $data_guru = mysqli_fetch_assoc($ambil_data_guru);
 <?php require "../template/head.html"; ?>
 <body>
 
-	<a href="../keluar.php">keluar</a>
+	<a href="profil.php">kembali</a>
 
-	<h2><?php echo $data_guru["nama_guru"]; ?></h2>
+	<br><br>
 
-	<a href="profil.php">profil</a> |
-	<a href="jadwal-mengajar.php">jadwal mengajar</a> |
+	<form method="post">
 
-	<?php if ($data_guru["id_kelas"] == ""): ?>
+		<input type="password" name="kata_sandi" placeholder="kata sandi baru">
+
+		<button type="submit" name="ubah">ubah</button>
 		
-	<?php else: ?>
-		<a href="kelasku.php">kelasku</a>
-	<?php endif ?>
+	</form>
 	
 </body>
 </html>

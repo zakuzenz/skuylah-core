@@ -66,7 +66,7 @@ if(isset($_POST["unggah"])) {
 	// var_dump($tanggal_hari_ini, $kelas, $jenis_pelajaran, $mata_pelajaran, $id_guru, $nama_pelajaran); die();
 
 	if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
-		if($ukuran < 10485760){
+		if($ukuran < 5242880){
 
 			$cek_nama_file = mysqli_query($koneksi_database, "SELECT * FROM pelajaran WHERE pelajaran='$nama_pelajaran_baru' ");
 			// var_dump($cek_nama_file); die();
@@ -114,8 +114,6 @@ if(isset($_POST["unggah"])) {
 	">kembali</a> | <br>
 
 	<h2><?php echo "unggah " . $data_jenis_pelajaran['nama_jenis_pelajaran'] . " " . $data_mata_pelajaran['nama_mata_pelajaran'] . " kelas " . $data_kelas["nama_kelas"]; ?></h2>
-
-	<p>ekstensi file yang boleh diunggah : .pdf, .docx, .pptx</p>
 
 	<form method="post" enctype="multipart/form-data">
 
