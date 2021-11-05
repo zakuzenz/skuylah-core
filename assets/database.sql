@@ -4,7 +4,7 @@ CREATE TABLE sekolah(
   nama_sekolah VARCHAR(255) NOT NULL
 );
 
-INSERT INTO sekolah(id_sekolah, nama_sekolah) VALUES("SMK0001","SMK MUTU WONOSOBO");
+INSERT INTO sekolah(id_sekolah, nama_sekolah) VALUES("SMK0001","SKUYLAH");
 
 CREATE TABLE admin(
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -26,8 +26,6 @@ CREATE TABLE kelas(
   CONSTRAINT fk_sekolah_kelas FOREIGN KEY (id_sekolah) REFERENCES sekolah (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO kelas(id_sekolah, nama_kelas) VALUES(1,"10 RPL"),(1,"10 AKL");
-
 CREATE TABLE guru(
   id INT AUTO_INCREMENT PRIMARY KEY,
   id_sekolah INT NOT NULL,
@@ -41,10 +39,6 @@ CREATE TABLE guru(
   CONSTRAINT fk_sekolah_guru FOREIGN KEY (id_sekolah) REFERENCES sekolah (id) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT fk_kelas_guru FOREIGN KEY (id_kelas) REFERENCES kelas(id_kelas) ON DELETE SET NULL ON UPDATE CASCADE
 );
-
-INSERT INTO guru(id_sekolah, id_guru, nama_guru, kata_sandi) VALUES
-  (1, "G0001", "GURU 1", "123"),
-  (1, "G0002", "GURU 2", "123");
 
 CREATE TABLE siswa(
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -63,10 +57,6 @@ CREATE TABLE siswa(
   CONSTRAINT fk_kelas_siswa FOREIGN KEY (id_kelas) REFERENCES kelas(id_kelas) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
-INSERT INTO siswa(id_sekolah, id_siswa, nama_siswa, kata_sandi, id_kelas) VALUES
-  (1, "S0001", "SISWA 1", "123", 1),
-  (1, "S0002", "SISWA 2", "123", 1);
-
 CREATE TABLE hari(
   id_hari INT AUTO_INCREMENT PRIMARY KEY,
   nama_hari VARCHAR(255) NOT NULL
@@ -79,7 +69,25 @@ CREATE TABLE mata_pelajaran(
   nama_mata_pelajaran VARCHAR(255) NOT NULL
 );
 
-INSERT INTO mata_pelajaran(nama_mata_pelajaran) VALUES("matematika"),("fisika"),("kimia"),("bahasa");
+INSERT INTO mata_pelajaran(nama_mata_pelajaran)
+VALUES
+  ("Matematika"),
+  ("Biologi"),
+  ("Fisika"),
+  ("Kimia"),
+  ("Bahasa Indonesia"),
+  ("Bahasa Inggris"),
+  ("Pendidikan Agama"),
+  ("Pendidikan Kewarganegaraan"),
+  ("Pendidikan Jasmani"),
+  ("Sejarah"),
+  ("Sosiologi"),
+  ("Ekonomi"),
+  ("Geografi"),
+  ("Komputer"),
+  ("Seni dan Prakarya"),
+  ("Muatan Lokal")
+;
 
 CREATE TABLE jadwal(
   id_jadwal INT AUTO_INCREMENT PRIMARY KEY,
@@ -95,12 +103,6 @@ CREATE TABLE jadwal(
   CONSTRAINT fk_mata_pelajaran_jadwal FOREIGN KEY (id_mata_pelajaran) REFERENCES mata_pelajaran(id_mata_pelajaran) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT fk_guru_jadwal FOREIGN KEY (id_guru) REFERENCES guru(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-INSERT INTO jadwal(id_kelas, id_hari, id_mata_pelajaran, id_guru, waktu_mulai, waktu_selesai) VALUES
-  (1, 1, 1, 1, "070000", "160000"),
-  (1, 2, 2, 2, "070000", "160000"),
-  (1, 3, 3, 1, "070000", "160000"),
-  (1, 4, 4, 2, "070000", "160000");
 
 CREATE TABLE jenis_pelajaran(
   id_jenis_pelajaran INT AUTO_INCREMENT PRIMARY KEY,
