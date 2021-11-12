@@ -71,22 +71,22 @@ CREATE TABLE mata_pelajaran(
 
 INSERT INTO mata_pelajaran(nama_mata_pelajaran)
 VALUES
-  ("Matematika"),
-  ("Biologi"),
-  ("Fisika"),
-  ("Kimia"),
-  ("Bahasa Indonesia"),
-  ("Bahasa Inggris"),
-  ("Pendidikan Agama"),
-  ("Pendidikan Kewarganegaraan"),
-  ("Pendidikan Jasmani"),
-  ("Sejarah"),
-  ("Sosiologi"),
-  ("Ekonomi"),
-  ("Geografi"),
-  ("Komputer"),
-  ("Seni dan Prakarya"),
-  ("Muatan Lokal")
+  ("matematika"),
+  ("biologi"),
+  ("fisika"),
+  ("kimia"),
+  ("bahasa indonesia"),
+  ("bahasa inggris"),
+  ("pendidikan agama"),
+  ("pendidikan kewarganegaraan"),
+  ("pendidikan jasmani"),
+  ("sejarah"),
+  ("sosiologi"),
+  ("ekonomi"),
+  ("geografi"),
+  ("komputer"),
+  ("seni dan prakarya"),
+  ("muatan lokal")
 ;
 
 CREATE TABLE jadwal(
@@ -109,7 +109,7 @@ CREATE TABLE jenis_pelajaran(
   nama_jenis_pelajaran VARCHAR(255) NOT NULL
 );
 
-INSERT INTO jenis_pelajaran(nama_jenis_pelajaran) VALUES("MATERI"),("TUGAS");
+INSERT INTO jenis_pelajaran(nama_jenis_pelajaran) VALUES("materi"),("tugas");
 
 CREATE TABLE pelajaran(
   id_pelajaran INT AUTO_INCREMENT PRIMARY KEY,
